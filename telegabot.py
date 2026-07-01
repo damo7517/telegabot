@@ -3,12 +3,15 @@ import telebot
 import random
 import json
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 if not os.path.exists('expenses.json'):
     with open('expenses.json', 'w') as f:
         json.dump({}, f)
 
-bot = telebot.TeleBot('8664840739:AAGMgVYsa6nQKMCi0AQNJH9DGO9rqQioKhk')
+bot = telebot.TeleBot(os.getenv('BOT_TOKEN'))
 
 
 @bot.message_handler(commands=['start'])
